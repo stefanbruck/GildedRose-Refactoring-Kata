@@ -1,58 +1,90 @@
-using System;
-using System.Collections.Generic;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="TextTestFixture.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The program.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace GildedRose
 {
-	class Program
-	{
-		public static void Main(string[] args)
-		{
-			System.Console.WriteLine("OMGHAI!");
+    using System;
+    using System.Collections.Generic;
 
-			IList<Item> Items = new List<Item>{
-				new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-				new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
-				new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-				new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-				new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
-				new Item
-				{
-					Name = "Backstage passes to a TAFKAL80ETC concert",
-					SellIn = 15,
-					Quality = 20
-				},
-				new Item
-				{
-					Name = "Backstage passes to a TAFKAL80ETC concert",
-					SellIn = 10,
-					Quality = 49
-				},
-				new Item
-				{
-					Name = "Backstage passes to a TAFKAL80ETC concert",
-					SellIn = 5,
-					Quality = 49
-				},
-				// this conjured item does not work properly yet
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
-			};
+    /// <summary>
+    /// The program.
+    /// </summary>
+    internal class Program
+    {
+        #region Public Methods and Operators
 
-			var app = new GildedRose(Items);
+        /// <summary>
+        /// The main.
+        /// </summary>
+        /// <param name="args">
+        /// The args.
+        /// </param>
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("OMGHAI!");
 
-			
-			for (var i = 0; i < 31; i++)
-			{
-				System.Console.WriteLine("-------- day " + i + " --------");
-				System.Console.WriteLine("name, sellIn, quality");
-				for (var j = 0; j < Items.Count; j++)
-				{
-					System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
-				}
-				System.Console.WriteLine("");
-				app.UpdateQuality();
-			}
+            IList<Item> Items = new List<Item>
+                                    {
+                                        new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 }, 
+                                        new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 }, 
+                                        new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 }, 
+                                        new Item
+                                            {
+                                                Name = "Sulfuras, Hand of Ragnaros", 
+                                                SellIn = 0, 
+                                                Quality = 80
+                                            }, 
+                                        new Item
+                                            {
+                                                Name = "Sulfuras, Hand of Ragnaros", 
+                                                SellIn = -1, 
+                                                Quality = 80
+                                            }, 
+                                        new Item
+                                            {
+                                                Name = "Backstage passes to a TAFKAL80ETC concert", 
+                                                SellIn = 15, 
+                                                Quality = 20
+                                            }, 
+                                        new Item
+                                            {
+                                                Name = "Backstage passes to a TAFKAL80ETC concert", 
+                                                SellIn = 10, 
+                                                Quality = 49
+                                            }, 
+                                        new Item
+                                            {
+                                                Name = "Backstage passes to a TAFKAL80ETC concert", 
+                                                SellIn = 5, 
+                                                Quality = 49
+                                            }, 
+                                        
+                                        // this conjured item does not work properly yet
+                                        new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
+                                    };
 
-		}
+            var app = new GildedRose(Items);
 
-	}
+            for (int i = 0; i < 31; i++)
+            {
+                Console.WriteLine("-------- day " + i + " --------");
+                Console.WriteLine("name, sellIn, quality");
+                for (int j = 0; j < Items.Count; j++)
+                {
+                    Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                }
+
+                Console.WriteLine(string.Empty);
+                app.UpdateQuality();
+            }
+        }
+
+        #endregion
+    }
 }
