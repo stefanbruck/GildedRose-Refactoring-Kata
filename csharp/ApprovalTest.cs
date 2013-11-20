@@ -29,8 +29,11 @@ namespace GildedRoseTests
         /// The thirty days.
         /// </summary>
         [TestMethod]
+        [DeploymentItem(@"GoldenStandard.txt")]
         public void ThirtyDays()
         {
+            string expected = File.ReadAllText(@"GoldenStandard.txt");
+
             var fakeoutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeoutput));
             Console.SetIn(new StringReader("a\n"));
@@ -38,7 +41,7 @@ namespace GildedRoseTests
             Program.Main(new string[] { });
             string output = fakeoutput.ToString();
 
-            // Approvals.Verify(output);
+            Assert.AreEqual(expected, output);
         }
 
         #endregion
