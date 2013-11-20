@@ -13,6 +13,9 @@ namespace GildedRoseTests
     using System.IO;
     using System.Text;
 
+    using ApprovalTests;
+    using ApprovalTests.Reporters;
+
     using GildedRose;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -29,11 +32,9 @@ namespace GildedRoseTests
         /// The thirty days.
         /// </summary>
         [TestMethod]
-        [DeploymentItem(@"GoldenStandard.txt")]
+        [UseReporter(typeof(DiffReporter))]
         public void ThirtyDays()
         {
-            string expected = File.ReadAllText(@"GoldenStandard.txt");
-
             var fakeoutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeoutput));
             Console.SetIn(new StringReader("a\n"));
@@ -41,7 +42,7 @@ namespace GildedRoseTests
             Program.Main(new string[] { });
             string output = fakeoutput.ToString();
 
-            Assert.AreEqual(expected, output);
+            Approvals.Verify(output);
         }
 
         #endregion
