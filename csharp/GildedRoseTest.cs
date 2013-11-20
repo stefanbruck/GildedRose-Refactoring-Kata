@@ -25,12 +25,12 @@ namespace GildedRose
         /// The foo.
         /// </summary>
         [TestMethod]
-        public void foo()
+        public void Foo()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            var app = new GildedRose(Items);
+            IList<Item> items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
+            var app = new GildedRose(items);
             app.UpdateQuality();
-            Assert.AreEqual("fixme", Items[0].Name);
+            Assert.AreEqual("fixme", items[0].Name);
         }
 
         #endregion

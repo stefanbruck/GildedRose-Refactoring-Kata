@@ -21,7 +21,7 @@ namespace GildedRose
         /// <summary>
         /// The items.
         /// </summary>
-        private readonly IList<Item> Items;
+        private readonly IList<Item> items;
 
         #endregion
 
@@ -30,12 +30,12 @@ namespace GildedRose
         /// <summary>
         /// Initializes a new instance of the <see cref="GildedRose"/> class.
         /// </summary>
-        /// <param name="Items">
+        /// <param name="items">
         /// The items.
         /// </param>
-        public GildedRose(IList<Item> Items)
+        public GildedRose(IList<Item> items)
         {
-            this.Items = Items;
+            this.items = items;
         }
 
         #endregion
@@ -47,75 +47,75 @@ namespace GildedRose
         /// </summary>
         public void UpdateQuality()
         {
-            for (int i = 0; i < this.Items.Count; i++)
+            for (int i = 0; i < this.items.Count; i++)
             {
-                if (this.Items[i].Name != "Aged Brie"
-                    && this.Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (this.items[i].Name != "Aged Brie"
+                    && this.items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    if (this.Items[i].Quality > 0)
+                    if (this.items[i].Quality > 0)
                     {
-                        if (this.Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                        if (this.items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            this.Items[i].Quality = this.Items[i].Quality - 1;
+                            this.items[i].Quality = this.items[i].Quality - 1;
                         }
                     }
                 }
                 else
                 {
-                    if (this.Items[i].Quality < 50)
+                    if (this.items[i].Quality < 50)
                     {
-                        this.Items[i].Quality = this.Items[i].Quality + 1;
+                        this.items[i].Quality = this.items[i].Quality + 1;
 
-                        if (this.Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                        if (this.items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                         {
-                            if (this.Items[i].SellIn < 11)
+                            if (this.items[i].SellIn < 11)
                             {
-                                if (this.Items[i].Quality < 50)
+                                if (this.items[i].Quality < 50)
                                 {
-                                    this.Items[i].Quality = this.Items[i].Quality + 1;
+                                    this.items[i].Quality = this.items[i].Quality + 1;
                                 }
                             }
 
-                            if (this.Items[i].SellIn < 6)
+                            if (this.items[i].SellIn < 6)
                             {
-                                if (this.Items[i].Quality < 50)
+                                if (this.items[i].Quality < 50)
                                 {
-                                    this.Items[i].Quality = this.Items[i].Quality + 1;
+                                    this.items[i].Quality = this.items[i].Quality + 1;
                                 }
                             }
                         }
                     }
                 }
 
-                if (this.Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                if (this.items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
-                    this.Items[i].SellIn = this.Items[i].SellIn - 1;
+                    this.items[i].SellIn = this.items[i].SellIn - 1;
                 }
 
-                if (this.Items[i].SellIn < 0)
+                if (this.items[i].SellIn < 0)
                 {
-                    if (this.Items[i].Name != "Aged Brie")
+                    if (this.items[i].Name != "Aged Brie")
                     {
-                        if (this.Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                        if (this.items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                         {
-                            if (this.Items[i].Quality > 0)
+                            if (this.items[i].Quality > 0)
                             {
-                                if (this.Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                                if (this.items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    this.Items[i].Quality = this.Items[i].Quality - 1;
+                                    this.items[i].Quality = this.items[i].Quality - 1;
                                 }
                             }
                         }
                         else
                         {
-                            this.Items[i].Quality = this.Items[i].Quality - this.Items[i].Quality;
+                            this.items[i].Quality = this.items[i].Quality - this.items[i].Quality;
                         }
                     }
                     else
                     {
-                        if (this.Items[i].Quality < 50)
+                        if (this.items[i].Quality < 50)
                         {
-                            this.Items[i].Quality = this.Items[i].Quality + 1;
+                            this.items[i].Quality = this.items[i].Quality + 1;
                         }
                     }
                 }
